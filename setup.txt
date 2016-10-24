@@ -1,0 +1,31 @@
+
+setup
+
+[root@localhost server_health]# mysql -u root -p
+mysql> source /usr/local/server_health/db/schema.mysql.sql
+
+[root@localhost server_health]# chmod a+w /usr/local/server_health/var
+
+[root@localhost server_health]# crontab -l
+*/10 * * * * su -c '/usr/local/php/bin/php /usr/local/server_health/ui/index_health.php >/dev/null 2>&1' -s /bin/sh nobody
+
+[root@localhost server_health]# cat /usr/local/php/etc/php-fpm.conf
+pm.max_children = 100
+
+user = nobody
+group = nobody
+
+[root@localhost server_health]# cat /usr/local/nginx/conf/nginx.conf
+worker_processes  auto;
+
+        location / {
+            root   /usr/local/server_health/ui;
+            index  index.php index.html index.htm;
+        }
+		
+        location ~ \.php$ {
+            fastcgi_pass   127.0.0.1:9000;
+            fastcgi_index  index.php;
+            fastcgi_param  SCRIPT_FILENAME  /usr/local/server_health/ui$fastcgi_script_name;
+            include        fastcgi_params;
+        }

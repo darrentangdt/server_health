@@ -1,1 +1,1 @@
-# server_health
+server_health

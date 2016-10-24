@@ -1,0 +1,9 @@
+
+export
+
+mysqldump --user=sh --password='545124315@qq.com' sh > sh.sql
+
+import
+
+mysql --user=sh --password='545124315@qq.com' < schema.mysql.sql
+mysql --user=sh --password='545124315@qq.com' sh < sh.sql
