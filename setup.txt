@@ -4,6 +4,7 @@ setup
 [root@localhost server_health]# mysql -u root -p
 mysql> source /usr/local/server_health/db/schema.mysql.sql
 
+[root@localhost server_health]# mkdir -p /usr/local/server_health/var
 [root@localhost server_health]# chmod a+w /usr/local/server_health/var
 
 [root@localhost server_health]# crontab -l
