@@ -1,0 +1,22 @@
+
+server_health Virtual Appliance
+
+服务器带外运维工具server_health虚拟机
+
+物理机要求
+1、4G内存
+2、Windows 64位操作系统
+
+安装步骤
+1、下载virtualbox安装文件，地址：http://sw.bos.baidu.com/sw-search-sp/software/996c4609e64/VirtualBox_5.0.24.8355_Win.exe
+2、下载rhel65-sh.ova虚拟机文件，地址：http://pan.baidu.com/s/1cDXSom
+3、双击virtualbox安装文件打开安装向导，安装步骤：http://jingyan.baidu.com/article/25648fc1ddb0c09191fd0083.html
+4、使用virtualbox【管理】菜单下的【导入虚拟电脑】导入虚拟机，导入虚拟机步骤：http://jingyan.baidu.com/article/8275fc86a3586846a03cf62d.html
+5、启动虚拟机rhel65-sh
+6、等待操作系统启动完成后，使用浏览器打开管理界面：http://127.0.0.1
+
+备注
+1、虚拟机安装的是Red Hat Enterprise Linux 6.5操作系统，最小化安装
+2、操作系统用户名：root，密码：password
+3、已配置NAT和Port Forwarding，可以使用ssh访问127.0.0.1连接虚拟机
+4、如果虚拟机异常关机可能会导致mysql无法正常重启，可以执行rm /var/lib/mysql/mysql.sock，再执行service mysqld restart即可
